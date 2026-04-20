@@ -1,0 +1,242 @@
+/* ========================================= */
+/* RESET E SFONDO GLOBALE                    */
+/* ========================================= */
+body {
+    background-color: #050505;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    user-select: none;
+}
+
+#dx7-synthesizer {
+    display: flex; flex-direction: column;
+    width: 1450px; /* Larghezza incrementata */
+    box-shadow: 0 40px 80px rgba(0,0,0,1);
+    border-radius: 2px;
+}
+
+/* ========================================= */
+/* PANNELLO SUPERIORE                        */
+/* ========================================= */
+#upper-panel {
+    background-color: #312e31;
+    height: 170px; padding: 20px 25px;
+    display: flex; align-items: center; justify-content: flex-start; gap: 35px;
+    position: relative;
+    border-top: 2px solid #555; border-bottom: 3px solid #111;
+    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.4);
+}
+
+.screw {
+    width: 12px; height: 12px;
+    background: radial-gradient(circle at 30% 30%, #666, #111);
+    border-radius: 50%; position: absolute; bottom: 10px;
+    box-shadow: inset 0 0 4px #000, 0 1px 1px rgba(255,255,255,0.1);
+}
+.screw::after { content: ''; position: absolute; top: 5px; left: 2px; width: 8px; height: 1.5px; background: #050505; transform: rotate(45deg); }
+.screw-bl { left: 15px; } .screw-br { right: 15px; }
+
+.top-label, .group-label {
+    color: #92a4b8; font-size: 8px; font-weight: bold; letter-spacing: 0.5px;
+    display: block; text-transform: uppercase; text-align: center;
+}
+.group-label { border-top: 1px solid #92a4b8; padding-top: 3px; margin-bottom: 5px; }
+
+/* === SLIDERS AREA === */
+.sliders-area { display: flex; gap: 20px; align-items: flex-end; }
+.data-entry-group { display: flex; align-items: flex-end; gap: 10px; }
+
+.slider-module { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.slider-body { display: flex; align-items: center; gap: 5px; height: 65px; }
+
+.vertical-slider {
+    -webkit-appearance: slider-vertical;
+    appearance: slider-vertical;
+    width: 18px; height: 100%;
+    background: #000; outline: none; margin: 0;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,1); border-radius: 2px;
+}
+.vertical-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 26px;
+    background: linear-gradient(to bottom, #222, #111);
+    border: 1px solid #000; border-radius: 1px; cursor: pointer;
+    box-shadow: inset 0 0 0 1px #444, inset 0 12px 0 0 #222, inset 0 13px 0 0 #d4c062;
+}
+.slider-ticks {
+    height: 100%; width: 6px;
+    background: repeating-linear-gradient(to bottom, #92a4b8, #92a4b8 1px, transparent 1px, transparent 4px);
+}
+
+.yes-no-buttons { display: flex; gap: 5px; margin-bottom: 2px; }
+
+/* === MEMBRANE BUTTONS === */
+.btn-group { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-end;}
+.row-inner { display: flex; gap: 5px; }
+
+.membrane-btn {
+    border: 1px solid #111; color: #fff;
+    width: 44px; height: 22px; border-radius: 2px; cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.6);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: background 0.1s; padding: 2px 4px;
+}
+.membrane-btn:active, .membrane-btn.active { box-shadow: inset 0 2px 5px rgba(0,0,0,0.8); transform: translateY(1px); }
+
+.membrane-btn .btn-text { font-size: 5px; font-weight: bold; line-height: 1.1; letter-spacing: 0.5px; }
+.membrane-btn .sub { font-size: 5px; font-weight: bold; margin-top: 1px; letter-spacing: 0px;}
+.membrane-btn.small { width: 38px; height: 22px; }
+
+.membrane-btn.turquoise { background-color: #00bfa5; }
+.membrane-btn.red { background-color: #fc6363; }
+.membrane-btn.purple { background-color: #7167a5; color: #f0f0f0;}
+.membrane-btn.orange { background-color: #d88c60; color: #111;}
+
+/* === CONTROLS & DISPLAY === */
+.controls-display-area { display: flex; flex-direction: column; gap: 15px;}
+.control-row.top { display: flex; gap: 10px; align-items: flex-end;}
+.control-row.bottom-with-display { display: flex; gap: 20px; align-items: flex-end;}
+.bottom-btns { display: flex; gap: 10px; }
+
+.display-module {
+    display: flex; background: #000; padding: 4px; border-radius: 2px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,1), 0 1px 1px rgba(255,255,255,0.1);
+    border: 2px solid #111; align-items: center; gap: 10px; width: 175px; height: 30px;
+    margin-bottom: 2px;
+}
+.led-red { color: #ff2a2a; font-family: 'Courier New', monospace; font-size: 24px; font-weight: bold; text-shadow: 0 0 5px #ff2a2a; margin-left: 10px; width: 20px; text-align: center; }
+.lcd-blue { background-color: #2d3df5; color: #fff; font-family: 'Courier New', monospace; font-size: 9px; font-weight: bold; padding: 4px 6px; flex-grow: 1; height: 22px; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; text-shadow: 0 0 2px rgba(255,255,255,0.5); }
+
+/* === GRIGLIA 32 TASTI === */
+.grid-32-area { flex-grow: 1; display: flex; flex-direction: column; padding-top: 15px; margin-left: 10px; }
+
+#buttons-32-container { display: flex; flex-direction: column; gap: 45px; }
+.grid-row { display: flex; gap: 6px; position: relative;}
+
+.grid-cell { display: flex; flex-direction: column; align-items: center; position: relative; }
+.group-label-purple { position: absolute; top: -20px; left: 0; color: #7167a5; font-size: 5px; font-weight: bold; border-top: 1px solid #7167a5; padding-top: 1px; white-space: nowrap; z-index: 10;}
+.param-label { position: absolute; top: -8px; font-size: 5px; color: #92a4b8; font-weight: bold; width: 100%; text-align: center; white-space: nowrap; letter-spacing: 0.2px;}
+.sub-label { position: absolute; bottom: -8px; font-size: 5px; color: #92a4b8; font-weight: bold; width: 100%; text-align: center; white-space: nowrap; letter-spacing: 0.2px; line-height: 1.1;}
+.voice-btn { width: 40px; height: 25px; font-size: 9px; }
+
+
+/* ========================================= */
+/* PANNELLO INFERIORE (Wheels e Tastiera)    */
+/* ========================================= */
+#dx7-lower-chassis { display: flex; background-color: #1a1919; height: 200px; border-radius: 0 0 4px 4px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+
+#wheel-block { width: 140px; background-color: #1e1d1d; display: flex; justify-content: center; align-items: center; gap: 15px; border-right: 3px solid #000; box-shadow: inset -5px 0 15px rgba(0,0,0,0.5); padding: 0 10px; }
+.wheel-container { display: flex; flex-direction: column; align-items: center; }
+.wheel-label { color: #888; font-size: 8px; font-weight: bold; margin-bottom: 10px; }
+.wheel-label.sub { margin-top: 10px; font-size: 7px; }
+.wheel-slot { width: 20px; height: 90px; background-color: #050505; border-radius: 2px; position: relative; box-shadow: inset 0 10px 20px rgba(0,0,0,1), inset 0 -5px 10px rgba(0,0,0,0.8), 0 1px 1px rgba(255,255,255,0.1); }
+.wheel { width: 20px; height: 45px; position: absolute; left: 0; border-radius: 2px; background: linear-gradient(to bottom, #111 0%, #444 50%, #111 100%); box-shadow: 0 5px 10px rgba(0,0,0,0.8); cursor: grab; display: flex; align-items: center; justify-content: center; }
+.wheel:active { cursor: grabbing; }
+.wheel-line { width: 14px; height: 2px; background-color: #eee; box-shadow: 0 0 2px rgba(255,255,255,0.5); }
+.snap-back { transition: top 0.15s cubic-bezier(0.4, 0.0, 0.2, 1); }
+
+#piano-wrapper { flex-grow: 1; display: flex; flex-direction: column; background-color: #000; }
+.chassis-lip { height: 20px; background: linear-gradient(to bottom, #1a1919, #000); border-bottom: 2px solid #000; }
+#piano { display: flex; position: relative; height: 180px; width: 100%; }
+
+.key.white { flex: 1; height: 100%; background: linear-gradient(to bottom, #f9f9f9 0%, #e6e6e6 100%); border: 1px solid #aaa; border-top: none; border-radius: 0 0 3px 3px; z-index: 1; box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1); }
+.key.white.active { background: #d4d4d4; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4); }
+.key.black { width: 14px; height: 60%; background: linear-gradient(to bottom, #333 0%, #111 100%); border: 1px solid #000; margin-left: -7px; margin-right: -7px; border-radius: 0 0 2px 2px; z-index: 2; box-shadow: 2px 5px 8px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.2); }
+.key.black.active { background: #000; box-shadow: 1px 2px 4px rgba(0,0,0,0.6); }
+.key.octave-highlight { border-bottom: 5px solid #00bfa5 !important; }
+
+.side-panel.right { width: 30px; background: linear-gradient(90deg, #111, #2b2b2b); border-left: 3px solid #000; }
+
+/* ========================================= */
+/* PANNELLO BRAND E SCHEMI (Top)             */
+/* ========================================= */
+#brand-panel {
+    background-color: #151515; /* Nero più scuro rispetto al pannello controlli */
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: relative;
+    border-bottom: 2px solid #000;
+    /* Spostiamo il bordo arrotondato in cima a questo nuovo pannello */
+    border-radius: 4px 4px 0 0;
+    box-shadow: inset 0 5px 15px rgba(0,0,0,0.8);
+}
+
+/* Modifica al pannello sottostante per togliere il raggio superiore che ora ha il brand-panel */
+#upper-panel {
+    border-radius: 0; 
+}
+
+/* Nuove Viti (Superiori) */
+.screw-tl { top: 15px; left: 15px; }
+.screw-tr { top: 15px; right: 15px; }
+/* Riposizioniamo le viti basse per il brand-panel */
+#brand-panel .screw-bl { bottom: 15px; left: 15px; }
+#brand-panel .screw-br { bottom: 15px; right: 15px; }
+
+/* Stile dell'Area Logo */
+.logo-area {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.brand-name {
+    color: #f0f0f0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: -2px; /* Allinea la base del testo con il logo BX7 */
+}
+
+.bx7-logo {
+    height: 35px; /* Adatta l'altezza del tuo SVG */
+    /* Se l'SVG è nero e lo vuoi bianco, e non puoi modificarlo, scommenta la riga sotto: */
+    /* filter: invert(1); */
+}
+
+.brand-subtitle {
+    color: #888;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 6px;
+    letter-spacing: 0.5px;
+    max-width: 100px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+/* Placeholder dello Schema (fino a che non hai l'SVG) */
+.algorithms-area {
+    width: 650px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schema-placeholder {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+.schema-placeholder .schema-sub {
+    font-size: 8px;
+    font-weight: normal;
+    margin-top: 5px;
+    color: #444;
+}

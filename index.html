@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Yamaha DX7 Web Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="dx7-synthesizer">
+
+        <div id="brand-panel">
+            <div class="screw screw-bl"></div>
+            <div class="screw screw-br"></div>
+            <div class="screw screw-tl"></div>
+            <div class="screw screw-tr"></div>
+
+            <div class="logo-area">
+                <span class="brand-name">YAMAHA</span>
+                <img src="BX7-Logo.svg" alt="BX7 Logo" class="bx7-logo">
+                <span class="brand-subtitle">DIGITAL PROGRAMMABLE ALGORITHM SYNTHESIZER</span>
+            </div>
+
+            <div class="algorithms-area">
+                <div class="schema-placeholder">
+                    <span>ALGORITHM / EG SCHEMA AREA</span>
+                    <span class="schema-sub"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="upper-panel">
+            <div class="screw screw-bl"></div>
+            <div class="screw screw-br"></div>
+
+            <div class="panel-section sliders-area">
+                <div class="slider-module">
+                    <span class="top-label">VOLUME</span>
+                    <div class="slider-body">
+                        <input type="range" id="vol-slider" class="vertical-slider" min="0" max="99" value="99">
+                        <div class="slider-ticks"></div>
+                    </div>
+                </div>
+                
+                <div class="data-entry-group">
+                    <div class="slider-module">
+                        <span class="top-label">DATA ENTRY</span>
+                        <div class="slider-body">
+                            <input type="range" id="data-slider" class="vertical-slider" min="0" max="99" value="0">
+                            <div class="slider-ticks"></div>
+                        </div>
+                    </div>
+                    <div class="yes-no-buttons">
+                        <button class="membrane-btn turquoise small">
+                            <div class="btn-text">-1</div>
+                            <div class="sub">NO/OFF</div>
+                        </button>
+                        <button class="membrane-btn turquoise small">
+                            <div class="btn-text">+1</div>
+                            <div class="sub">YES/ON</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section controls-display-area">
+                <div class="control-row top">
+                    <div class="btn-group">
+                        <span class="group-label"></span>
+                        <button class="membrane-btn red"><div class="btn-text">STORE</div></button>
+                    </div>
+                    <div class="btn-group">
+                        <span class="group-label">MEMORY PROTECT</span>
+                        <div class="row-inner">
+                            <button class="membrane-btn turquoise"><div class="btn-text">INTERNAL</div></button>
+                            <button class="membrane-btn turquoise"><div class="btn-text">CARTRIDGE</div></button>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <span class="group-label"></span>
+                        <button class="membrane-btn purple"><div class="btn-text">OPERATOR<br>SELECT</div></button>
+                    </div>
+                </div>
+
+                <div class="control-row bottom-with-display">
+                    <div class="bottom-btns">
+                        <div class="btn-group">
+                            <span class="group-label"></span>
+                            <button class="membrane-btn purple"><div class="btn-text">EDIT/<br>COMPARE</div></button>
+                        </div>
+                        <div class="btn-group">
+                            <span class="group-label">MEMORY SELECT</span>
+                            <div class="row-inner">
+                                <button class="membrane-btn turquoise"><div class="btn-text">INTERNAL</div></button>
+                                <button class="membrane-btn turquoise"><div class="btn-text">CARTRIDGE</div></button>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <span class="group-label"></span>
+                            <button class="membrane-btn orange"><div class="btn-text">FUNCTION</div></button>
+                        </div>
+                    </div>
+
+                    <div class="display-module">
+                        <div class="led-red" id="led-screen">1</div>
+                        <div class="lcd-blue" id="lcd-screen">
+                            <div class="lcd-line">1. BRASS 1</div>
+                            <div class="lcd-line">READY...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section grid-32-area">
+                <div id="buttons-32-container"></div>
+            </div>
+        </div>
+
+        <div id="dx7-lower-chassis">
+            
+            <div id="wheel-block">
+                <div class="wheel-container">
+                    <div class="wheel-label">PITCH</div>
+                    <div class="wheel-slot" id="slot-pitch">
+                        <div class="wheel" id="pitch-wheel"><div class="wheel-line"></div></div>
+                    </div>
+                    <div class="wheel-label sub">DOWN / UP</div>
+                </div>
+                <div class="wheel-container">
+                    <div class="wheel-label">MODULATION</div>
+                    <div class="wheel-slot" id="slot-mod">
+                        <div class="wheel" id="mod-wheel"><div class="wheel-line"></div></div>
+                    </div>
+                    <div class="wheel-label sub">MIN / MAX</div>
+                </div>
+            </div>
+
+            <div id="piano-wrapper">
+                <div class="chassis-lip"></div>
+                <div id="piano"></div>
+            </div>
+
+            <div class="side-panel right"></div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
